@@ -1,69 +1,39 @@
 let users = [];
 
-// let User = {
-//     fName: "",
-//     lName: "",
-//     address: "",
-//     email: ""
-// }
-
-
-
-
-// jQuery(function () {
-//     $(document).ready(function(){
-
-//         $("button").click(function(){
-
-//             console.log($("#lName"));
-//         });
-    
-//   });
-// });
-
 function addUser(){
+  console.log("in add user");
 
-    //let user = new User();
-    let user = new Object();
-    user.fName = document.getElementById("fname").value;
-    user.lName = document.getElementById("lname").value;
-    user.address = document.getElementById("address").value;
-    user.email = document.getElementById("email").value;
+  let table = document.getElementById("thead");
+  let row = table.insertRow();
 
-    let table = document.getElementById("tbody");
+    Object.keys(users[0]).forEach(attr => {
+      let cell = row.insertCell();
+      cell.innerHTML = attr;
+    });
 
-    let row = table.insertRow();
+  table = document.getElementById("tbody");
+
+  Object.values(users).forEach(element => {
+    row = table.insertRow();
+    Object.values(element).forEach(attr => {
+      console.log(attr);
+      let cell = row.insertCell();
+      cell.innerHTML = attr;
+    });
+  });
 
 
-    // for(var attr in user.value){
-    //     let cell = row.insertCell();
-    //     console.log(attr);
-    //     cell.innerHTML = attr;
-    // }
-    
-    
-    let cell = row.insertCell();
-    cell.innerHTML = document.getElementById("fname").value;
-    cell = row.insertCell();
-    cell.innerHTML = document.getElementById("lname").value;
-    cell = row.insertCell(2);
-    cell.innerHTML = document.getElementById("address").value;
-    cell = row.insertCell(3);
-    cell.innerHTML = document.getElementById("email").value;
+
 }
     
 function loadDoc() {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "todo.json", true);
-  
-    //xhr.open("GET", "https://restcountries.com/v3.1/all", true);
     xhr.onreadystatechange = function() {
       if (this.status == 200) {
-        let countries = JSON.parse(this.response);
-        alert(countries[0].text);
-        console.log(countries);
+        users = JSON.parse(this.response);
+        console.log(this);
       }
     };
     xhr.send();
   }
-  loadDoc();

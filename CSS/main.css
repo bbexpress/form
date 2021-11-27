@@ -1,4 +1,4 @@
-.container {
+/* .container {
   margin-left: auto;
   margin-right: auto;
   border: 20px;
@@ -7,6 +7,18 @@
 }
 
 td {
-  font-size: 50;
+  font-size: 10;
   
 }
+
+#thead {
+  width: auto !important;
+}
+
+td {
+  width: auto !important;
+}
+
+#tbody {
+  width: auto !important;
+} */
